@@ -1,87 +1,126 @@
-/*package es.loyola.inftv.app.services;
+package es.loyola.inftv.app.services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import es.loyola.inftv.app.dao.Categoria;
 import es.loyola.inftv.app.dao.Ingrediente;
 import es.loyola.inftv.app.dao.Marca;
-import es.loyola.inftv.app.dao.Opinion;
 import es.loyola.inftv.app.dao.Producto;
 import es.loyola.inftv.app.dao.ProductoImpl;
-import es.loyola.inftv.app.dao.Usuario;
-import es.loyola.inftv.app.dao.UsuarioImpl;
+import es.loyola.inftv.app.manager.CategoriasManager;
+import es.loyola.inftv.app.manager.IngredientesManager;
+import es.loyola.inftv.app.manager.MarcaManager;
 import es.loyola.inftv.app.manager.ProductosManager;
-import es.loyola.inftv.app.manager.UsuariosManager;
 
+@WebServlet("/modificarProducto")
 public class ModificarProductoServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre= request.getParameter("nombre");
-		Marca marca= request.getParameter("marca");
-		List<Ingrediente> composicion = request.getParameter("composicion");
-		List<Categoria> categorias = request.getParameter("categorias");
-		List<Opinion> historialOpiniones = request.getParameter("historialOpiniones");
-		String codBarras = request.getParameter("codBarras");
-		Integer id = Integer.parseInt("id");
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
-		Producto ve = new ProductoImpl(); 
-		List<Producto> t=  new LinkedList<Producto>();
-			if (id<=0) {
-				
-				//ERROR 
-			}
-			
-			else {
-				
+		Integer id= Integer.parseInt(request.getParameter("id"));
+		String nombre= request.getParameter("nombre");
+		String codBarras = request.getParameter("codBarras");
+		String marcaId = request.getParameter("marca");
+		String composicionString = request.getParameter("composicion");
+		String categoriasString = request.getParameter("categorias");
+		
+		Marca marca = null;
+		if (!marcaId.isEmpty()) {
+		    marca = MarcaManager.getMarcaByName(marcaId);
+		}
+		
+		
+		List<Ingrediente> composicion = new ArrayList<Ingrediente>();
+		if (!composicionString.isEmpty()) {
+		    String[] ingredientesIds = composicionString.split(",");
+		    for (String ingredienteId : ingredientesIds) {
+		        Ingrediente ingrediente = IngredientesManager.getIngredienteById(ingredienteId);
+		        if (ingrediente != null) {
+		            composicion.add(ingrediente);
+		        }
+		    }
+		}
+		
+		
+		List<Categoria> categorias = new ArrayList<Categoria>();
+		if (!categoriasString.isEmpty()) {
+		
+		    String[] categoriasIds = categoriasString.split(",");
+		    for (String categoriaId : categoriasIds) {
+		        Categoria categoria = CategoriasManager.getCategoriaByName(categoriaId);
+		        if (categoria != null) {
+		            categorias.add(categoria);
+		        }
+		    }
+		}
+		
+		
+		
+		
+		Producto ve = null;
+	    List<Producto> t=  new LinkedList<Producto>();
+	   
 				for (Producto u: ProductosManager.getListadoProductos()) {
 					if(u.getId() == id) {
-						if (nombre != null)
-							u.setNombre(nombre);
+						ve = new ProductoImpl();
+						ve.setId(id);
+						if (!nombre.isEmpty())
+							ve.setNombre(nombre);
+						else
+							ve.setNombre(u.getNombre());
 						if ( marca!= null)
-							u.setMarca(marca);
-						if (composicion != null)
-								u.setComposicion(composicion);
-						if (categorias != null)
-							u.setCategorias(categorias);
-						if (historialOpiniones != null)
-							u.setHistorialOpiniones(historialOpiniones);
+							ve.setMarca(marca);
+						else
+							ve.setMarca(u.getMarca());
+						if (!composicion.isEmpty())
+							ve.setComposicion(composicion);
+						else
+							ve.setComposicion(u.getComposicion());
+						if (!categorias.isEmpty())
+							ve.setCategorias(categorias);
+						else
+							ve.setCategorias(u.getCategorias());
 						if (codBarras != null)
-							u.setCodBarras(codBarras);
-						if (id != null)
-							u.setId(id);
-						ve=u;
+							ve.setCodBarras(codBarras);
+						else
+							ve.setCodBarras(u.getCodBarras());
+						t.add(ve);
+							
 							}
-
 					
 					}		
 				
-			}
 				 
 			JSONObject res= new JSONObject();
-			 
-			if (ve == null)
+			JSONArray array = new JSONArray(t);
+			
+			if (t.isEmpty())
 			{ 
 				res.put("code","ERROR"); 
-				res.put("mensaje", "Listado vacio");
-				res.put("resultado", ve);
+				res.put("message", "Producto no encontrado");
+				res.put("result", array);
 			} 
 			else {
 				res.put("code","ok");
-				res.put("mensaje","ok");
-				res.put("resultado",ve);
+				res.put("message","ok");
+				res.put("result",array);
 				
 			}
 			
@@ -95,4 +134,4 @@ public class ModificarProductoServlet extends HttpServlet{
 				writer.close();
 			}
 		}
-}*/
+}

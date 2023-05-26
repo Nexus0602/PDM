@@ -2,8 +2,6 @@ package es.loyola.inftv.app.services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,12 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import es.loyola.inftv.app.dao.Ingrediente;
-import es.loyola.inftv.app.dao.IngredienteImpl;
 import es.loyola.inftv.app.dao.Producto;
-import es.loyola.inftv.app.dao.Usuario;
 import es.loyola.inftv.app.manager.ProductosManager;
-import es.loyola.inftv.app.manager.UsuariosManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,7 +30,6 @@ public class EliminarProductoServlet extends HttpServlet {
 
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-        PrintWriter out = response.getWriter();
 
         Integer id = Integer.parseInt(request.getParameter("id"));
         List<Producto> lista = ProductosManager.getListadoProductos();

@@ -2,9 +2,7 @@ package es.loyola.inftv.app.services;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,11 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
-
-import es.loyola.inftv.app.dao.Ingrediente;
-import es.loyola.inftv.app.dao.IngredienteImpl;
 import es.loyola.inftv.app.dao.Usuario;
 import es.loyola.inftv.app.dao.UsuarioImpl;
+import es.loyola.inftv.app.dao.Alergeno.tipoAlergeno;
 import es.loyola.inftv.app.manager.UsuariosManager;
 
 
@@ -30,14 +26,28 @@ public class ModificarUsuarioServlet  extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
 		Integer id= Integer.parseInt(request.getParameter("id"));
 		String nombre= request.getParameter("nombre");
 		String apellidos= request.getParameter("apellidos");
 		String email= request.getParameter("email");
 		String contrasenya= request.getParameter("contrasenya");
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
+		String alergenosParametro = request.getParameter("alergenos");
+		List<tipoAlergeno> listaAlergenos = new ArrayList<>();
+		
+		if (alergenosParametro != null && !alergenosParametro.isEmpty()) {
+		    String[] alergenosArray = alergenosParametro.split(",");
+		    for (String nombreAlergeno : alergenosArray) {
+		    	//System.out.println("Alergeno : " + nombreAlergeno);
+		    	tipoAlergeno alergeno = tipoAlergeno.valueOf(nombreAlergeno.toUpperCase());
+		        listaAlergenos.add(alergeno);
+		    }
+		}
+		
 		Usuario ve = null; 
+		JSONObject usuario = new JSONObject();
 			if (id<=0) {
 				
 				//ERROR 
@@ -64,6 +74,12 @@ public class ModificarUsuarioServlet  extends HttpServlet {
 							ve.setContrasenya(contrasenya);
 						else
 							ve.setContrasenya(u.getContrasenya());
+						if (!listaAlergenos.isEmpty())
+							ve.setAlergenos(listaAlergenos);
+						else
+							ve.setAlergenos(u.getAlergenos());
+						
+						usuario = new JSONObject(ve);
 						
 							}
 
@@ -73,13 +89,13 @@ public class ModificarUsuarioServlet  extends HttpServlet {
 			}
 				 
 			JSONObject res= new JSONObject();
-			JSONObject usuario = new JSONObject(ve);
+			
 			 
 			if (ve == null)
 			{ 
 				res.put("code","ERROR"); 
-				res.put("mensaje", "Listado vacio");
-				res.put("resultado", ve);
+				res.put("mensaje", "ERROR");
+				res.put("resultado", usuario);
 			} 
 			else {
 				res.put("code","ok");

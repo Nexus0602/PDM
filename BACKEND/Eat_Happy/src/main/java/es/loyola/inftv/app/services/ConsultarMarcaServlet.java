@@ -14,12 +14,12 @@ import java.util.List;
 
 import org.json.*;
 
-import es.loyola.inftv.app.dao.Producto;
-import es.loyola.inftv.app.manager.ProductosManager;
+import es.loyola.inftv.app.dao.Marca;
+import es.loyola.inftv.app.manager.MarcaManager;
 
-@WebServlet(urlPatterns = {"/getProducto","/consultarProducto"})
+@WebServlet(urlPatterns = {"/getMarca","/consultarMarca"})
 
-public class ConsultarProductoServlet extends HttpServlet {
+public class ConsultarMarcaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -29,25 +29,23 @@ public class ConsultarProductoServlet extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		List<Producto> productos = new LinkedList<Producto>();
+		String id = request.getParameter("nombre");
+		List<Marca> marcas = new LinkedList<Marca>();
 		
-		//JSONObject jsonUsuario = new JSONObject();
-		
-		Producto p = null;
-		p = ProductosManager.getProdById(id);
-		productos.add(p);
-		
+		Marca marca = null;
+				
+		marca = MarcaManager.getMarcaByName(id);
+		marcas.add(marca);
 		
 		JSONObject resultado = new JSONObject();
-		JSONArray array = new JSONArray(productos);
-		if (p != null) {
+		JSONArray array = new JSONArray(marcas);
+		if (marca != null) {
 		    resultado.put("code", "OK");
 		    resultado.put("message", "OK");
 		    resultado.put("result", array);
 		} else {
 		    resultado.put("code", "ERROR");
-		    resultado.put("message", "Usuario no encontrado");
+		    resultado.put("message", "Marca no encontrada");
 		    resultado.put("result", array);
 		}
 
@@ -58,4 +56,3 @@ public class ConsultarProductoServlet extends HttpServlet {
 		} finally {
 		    writer.close();
 		}}}
-

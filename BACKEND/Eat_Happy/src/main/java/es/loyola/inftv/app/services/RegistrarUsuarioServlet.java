@@ -36,29 +36,29 @@ public class RegistrarUsuarioServlet extends HttpServlet{
 		String alergenosParametro = request.getParameter("alergenos");
 		List<tipoAlergeno> listaAlergenos = new ArrayList<>();
 		
-		System.out.println("listaAlergenos: " + alergenosParametro);
+		//System.out.println("listaAlergenos: " + alergenosParametro);
 
 		if (alergenosParametro != null && !alergenosParametro.isEmpty()) {
 		    String[] alergenosArray = alergenosParametro.split(",");
 		    for (String nombreAlergeno : alergenosArray) {
-		    	System.out.println("Alergeno : " + nombreAlergeno);
+		    	//System.out.println("Alergeno : " + nombreAlergeno);
 		    	tipoAlergeno alergeno = tipoAlergeno.valueOf(nombreAlergeno.toUpperCase());
 		        listaAlergenos.add(alergeno);
-		        System.out.println("Alergeno añadido: " + alergeno);
 		    }
 		}
 		
-		System.out.println("listaAlergenos: " + listaAlergenos);
+		//System.out.println("listaAlergenos: " + listaAlergenos);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
-		Usuario ve = new UsuarioImpl();
+		Usuario ve = null;
 		List<Usuario> t=  new LinkedList<Usuario>();
 		t =  UsuariosManager.getListadoUsuarios();
 		
 		if (a != null && b != null && c != null && d!=null && e!=null)
 		{
 			//Crear el usuario
+			ve = new UsuarioImpl();
 		    ve.setId(a);
 		    ve.setNombre(b);
 		    ve.setApellidos(c);
@@ -73,10 +73,10 @@ public class RegistrarUsuarioServlet extends HttpServlet{
 		JSONArray array = new JSONArray(t);
 		
 		 
-		if (t == null)
+		if (ve == null)
 		{ 
 			res.put("code","ERROR");
-			res.put("message", "Listado vacio");
+			res.put("message", "ERROR");
 			res.put("result", array);
 		} 
 		else {

@@ -17,7 +17,7 @@ public class CategoriaImpl implements Categoria {
 		if (getClass() != obj.getClass())
 			return false;
 		CategoriaImpl other = (CategoriaImpl) obj;
-		return Objects.equals(descripcion, other.descripcion) && Objects.equals(nombre, other.nombre);
+		return  nombre.equalsIgnoreCase(other.nombre);
 	}
 	private String nombre;
 	private String descripcion;

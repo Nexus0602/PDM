@@ -14,9 +14,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import es.loyola.inftv.app.services.ListadoProductosServlet;
+import es.loyola.inftv.app.services.ListadoProductosPorCategoriaServlet;
 
-public class TestListadoProductos {
+public class TestListadoProductosPorCategoria {
 	
 	@Test
 	public void testGetProductos() throws IOException, ServletException {
@@ -24,12 +24,12 @@ public class TestListadoProductos {
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
 		
-		
+		when(request.getParameter("categoria")).thenReturn("Lacteos");
 		StringWriter stringWriter = new StringWriter();
 		PrintWriter out = new PrintWriter(stringWriter);
 		when(response.getWriter()).thenReturn(out);
 		
-		new ListadoProductosServlet().doGet(request,response);
+		new ListadoProductosPorCategoriaServlet().doGet(request,response);
 		
 		out.flush();
 		
@@ -41,7 +41,7 @@ public class TestListadoProductos {
 			assertTrue("El mensaje devuelto no es ok", objResponse.get("mensaje").equals("ok"));
 			
 			JSONArray arrayRes = objResponse.getJSONArray("resultado");
-			assertTrue( "El array no tiene un elemento", arrayRes.length() == 10);
+			assertTrue( "El array no tiene un elemento", arrayRes.length() == 2);
 			
 		}
 

@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import es.loyola.inftv.app.dao.Producto;
 import es.loyola.inftv.app.dao.Usuario;
-import es.loyola.inftv.app.manager.ProductosManager;
 import es.loyola.inftv.app.manager.UsuariosManager;
 
 @WebServlet("/eliminarUsuario")
@@ -29,7 +27,6 @@ public class EliminarUsuarioServlet extends HttpServlet  {
 		
 	response.setContentType("application/json");
 	response.setCharacterEncoding("utf-8");
-	PrintWriter out = response.getWriter();
 
 	Integer id = Integer.parseInt(request.getParameter ("id"));
 	List <Usuario> us2 =UsuariosManager.getListadoUsuarios();
@@ -47,16 +44,17 @@ public class EliminarUsuarioServlet extends HttpServlet  {
 					
 			}
 			
-			us2.remove(usuario);		
+			if (usuario!= null)
+				us2.remove(usuario);		
 		}
 		
 		JSONObject obj = new JSONObject();
         JSONArray array = new JSONArray(us2);
 
-        if (us2.isEmpty()) {
+        if (usuario == null) {
             obj.put("code", "ERROR");
-            obj.put("message", "Listado vacío");
-            obj.put("result", "Usuario no encontrado");
+            obj.put("message", "Usuario no encontrado");
+            obj.put("result", us2);
         } else {
             
             obj.put("code", "ok");

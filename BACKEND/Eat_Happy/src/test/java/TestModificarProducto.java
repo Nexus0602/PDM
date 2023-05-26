@@ -14,18 +14,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import es.loyola.inftv.app.services.ModificarUsuarioServlet;
+import es.loyola.inftv.app.services.ModificarProductoServlet;
 
-public class TestModificarUsuario {
+public class TestModificarProducto {
 	@Test
-	public void testDoPost() throws IOException,ServletException{
+	public void ModificarProducto() throws IOException,ServletException{
 		HttpServletRequest request=mock(HttpServletRequest.class);   
 		HttpServletResponse response=mock(HttpServletResponse.class);
-		when(request.getParameter("id")).thenReturn("9");
-		when(request.getParameter("nombre")).thenReturn("Pablo");
-		when(request.getParameter("apellidos")).thenReturn("Torti");
-		when(request.getParameter("email")).thenReturn("pablotorti@gmail.com");
-		when(request.getParameter("contrasenya")).thenReturn("Pablo1234");
+		when(request.getParameter("id")).thenReturn("1");
+		when(request.getParameter("nombre")).thenReturn("leche desnatada");
+		when(request.getParameter("marca")).thenReturn("pascual");
+		when(request.getParameter("composicion")).thenReturn("");
+		when(request.getParameter("categorias")).thenReturn("");
 
 		
 		
@@ -34,7 +34,7 @@ public class TestModificarUsuario {
 		
 		when(response.getWriter()).thenReturn(out);
 		
-		new ModificarUsuarioServlet().doPost(request,response);
+		new ModificarProductoServlet().doPost(request,response);
 		
 		out.flush();
 		
@@ -58,14 +58,16 @@ public class TestModificarUsuario {
 	}
 	
 	@Test
-	public void test2DoPost() throws IOException,ServletException{
+	public void ModificarProducto2() throws IOException,ServletException{
+		
 		HttpServletRequest request=mock(HttpServletRequest.class);   
 		HttpServletResponse response=mock(HttpServletResponse.class);
-		when(request.getParameter("id")).thenReturn("15");
-		when(request.getParameter("nombre")).thenReturn("Pablo");
-		when(request.getParameter("apellidos")).thenReturn("Torti");
-		when(request.getParameter("email")).thenReturn("pablotorti@gmail.com");
-		when(request.getParameter("contrasenya")).thenReturn("Pablo1234");
+		
+		when(request.getParameter("id")).thenReturn("56");
+		when(request.getParameter("nombre")).thenReturn("leche desnatada");
+		when(request.getParameter("marca")).thenReturn("pascual");
+		when(request.getParameter("composicion")).thenReturn("");
+		when(request.getParameter("categorias")).thenReturn("");
 
 		
 		
@@ -74,7 +76,7 @@ public class TestModificarUsuario {
 		
 		when(response.getWriter()).thenReturn(out);
 		
-		new ModificarUsuarioServlet().doPost(request,response);
+		new ModificarProductoServlet().doPost(request,response);
 		
 		out.flush();
 		
@@ -83,11 +85,10 @@ public class TestModificarUsuario {
 		 
 		JSONObject objresponse=new JSONObject();
 		
-		if(objresponse.has("code") && objresponse.has("mensaje")&& objresponse.has("resultado"))
+		if(objresponse.has("code") && objresponse.has("message")&& objresponse.has("result"))
 		{
-			assertTrue("El codigo devuelto no es ERROR", objresponse.get("code").equals("ERROR"));
-			assertTrue("El mensaje devuelto no es ok",objresponse.get("mensaje").equals("ERROR"));
-			
+			assertTrue("El codigo devuelto no es ok", objresponse.get("code").equals("ERROR"));
+			assertTrue("El mensaje devuelto no es ok",objresponse.get("message").equals("Producto no encontrado"));	 
 			 
 		}
 

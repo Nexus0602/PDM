@@ -17,7 +17,9 @@ import org.json.JSONObject;
 
 import es.loyola.inftv.app.dao.Categoria;
 import es.loyola.inftv.app.dao.CategoriaImpl;
+import es.loyola.inftv.app.dao.Marca;
 import es.loyola.inftv.app.manager.CategoriasManager;
+import es.loyola.inftv.app.manager.MarcaManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,9 +30,9 @@ import java.util.List;
 
 import es.loyola.inftv.app.util.DBUtil;
 
-@WebServlet(urlPatterns = {"/getCategorias","/getListadoCategorias"})
+@WebServlet(urlPatterns = {"/getMarcas"})
 
-public class ListadoCategoriasServlet extends HttpServlet {
+public class ListadoMarcasServlet extends HttpServlet {
 	
 private static final long serialVersionUID = 1L;
 	
@@ -40,12 +42,10 @@ private static final long serialVersionUID = 1L;
 		response.setContentType("application/json");
 		response.setCharacterEncoding("utf-8");
 		
-		List<Categoria> categorias = new LinkedList<Categoria>();
+		List<Marca> categorias = new LinkedList<Marca>();
 		
-		categorias = CategoriasManager.getListadoCategorias();
-		
-
-        
+		categorias = MarcaManager.getListadoMarcas();
+	    
 		 
 		JSONArray array = new JSONArray(categorias);
 		JSONObject resultado = new JSONObject();

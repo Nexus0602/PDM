@@ -36,21 +36,22 @@ public static List<Usuario> getListadoUsuarios(){
 		Ingrediente leche = new IngredienteImpl(Arrays.asList(tipoAlergeno.LACTOSA), "Leche", "Ingrediente básico", "6");
 		Ingrediente fructosa = new IngredienteImpl(Arrays.asList(tipoAlergeno.FRUCTOSA), "Fructosa", "Edulcorante", "7");
 		
-		Categoria lacteos = new CategoriaImpl("Lácteos", "Productos derivados de la leche");
-		Categoria carnes = new CategoriaImpl("Carnes", "Productos de origen animal ricos en proteínas");
-		Categoria frutasVerduras = new CategoriaImpl("Frutas y verduras", "Productos frescos y ricos en nutrientes");
-		Categoria cerealesGranos = new CategoriaImpl("Cereales y granos", "Productos ricos en carbohidratos y fibra");
-		Categoria bebidas = new CategoriaImpl("Bebidas", "Líquidos para hidratarse y refrescarse");
-		Categoria dulcesSnacks = new CategoriaImpl("Dulces y snacks", "Productos para disfrutar como postres o aperitivos");
-		Categoria panaderiaReposteria = new CategoriaImpl("Panadería y repostería", "Productos horneados y dulces");
-		Categoria precocinados = new CategoriaImpl("Precocinados", "Productos precocinados");
+		Categoria lacteos = CategoriasManager.getCategoriaByName("Lacteos");
+		Categoria carnes = CategoriasManager.getCategoriaByName("Carnes");
+		Categoria frutasVerduras = CategoriasManager.getCategoriaByName("Frutas y verduras");
+		Categoria cerealesGranos = CategoriasManager.getCategoriaByName("Cereales y granos");
+		Categoria bebidas = CategoriasManager.getCategoriaByName("Bebidas");
+		Categoria dulcesSnacks = CategoriasManager.getCategoriaByName("Dulces y snacks");
+		Categoria panaderiaReposteria = CategoriasManager.getCategoriaByName("Panaderia y reposteria");
+		Categoria precocinados = CategoriasManager.getCategoriaByName("Precocinados");
 
-		Marca pascual = new MarcaImpl("PASCUAL","calle",123,"CIF");
-		Marca vivesoy = new MarcaImpl("VIVESOY","calle",764,"CIF");
-		Marca hacendado = new MarcaImpl("HACENDADO","calle",524,"CIF");
-		Marca gallo = new MarcaImpl("GALLO","calle",326,"CIF");
-		Marca asturiana = new MarcaImpl("ASTURIANA","calle",184,"CIF");
-		Marca nestle = new MarcaImpl("NESTLE","calle",584,"CIF");
+		Marca pascual = MarcaManager.getMarcaByName("PASCUAL");
+		Marca vivesoy = MarcaManager.getMarcaByName("VIVESOY");
+		Marca hacendado = MarcaManager.getMarcaByName("HACENDADO");
+		Marca gallo = MarcaManager.getMarcaByName("GALLO");
+		Marca asturiana = MarcaManager.getMarcaByName("ASTURIANA");
+		Marca nestle = MarcaManager.getMarcaByName("NESTLE");
+		Marca donSimon = MarcaManager.getMarcaByName("DONSIMON");
 	
 		Producto p1 = new ProductoImpl ("leche desnatada", pascual,Arrays.asList(harina),Arrays.asList(lacteos,bebidas),o1,"A34624", 1);
 		Producto p2 = new ProductoImpl ( "bebida de soja con chocolate",vivesoy,Arrays.asList(soja), Arrays.asList(lacteos,bebidas),o2,"S35652",2);
@@ -64,8 +65,8 @@ public static List<Usuario> getListadoUsuarios(){
 		Usuario usuario5 = new UsuarioImpl(5,"Jordi", "Pérez", "sara.rodriguez@gmail.com", "contraseñadef", Arrays.asList(tipoAlergeno.GLUTEN, tipoAlergeno.HUEVOS,tipoAlergeno.LACTOSA), Arrays.asList(p3));
 		Usuario usuario6 = new UsuarioImpl(6,"Pablo", "Tordera", "juan.perez@gmail.com", "contraseña123", Arrays.asList(tipoAlergeno.GLUTEN,tipoAlergeno.SULFITOS), Arrays.asList(p4, p1));
 		Usuario usuario7 = new UsuarioImpl(7,"Jose", "González", "maria.gonzalez@gmail.com", "contraseña456", Arrays.asList(tipoAlergeno.GLUTEN, tipoAlergeno.HUEVOS), Arrays.asList(p2,p1));
-		Usuario usuario8 = new UsuarioImpl(8,"Lucia", "Montesinos", "pedro.sanchez@gmail.com", "contraseña789", Arrays.asList(tipoAlergeno.LACTOSA), Arrays.asList(p4,p1));
-		Usuario usuario9 = new UsuarioImpl(9,"Raul", "Coloma", "ana.martinez@gmail.com", "contraseñaabc", Arrays.asList(tipoAlergeno.CACAHUETES), Arrays.asList(p3, p4,p1));
+		Usuario usuario8 = new UsuarioImpl(8,"Lucia", "Montesinos", "lucia.monts@gmail.com", "contra789", Arrays.asList(tipoAlergeno.LACTOSA,tipoAlergeno.GLUTEN,tipoAlergeno.HUEVOS), Arrays.asList(p4,p1,p3,p2));
+		Usuario usuario9 = new UsuarioImpl(9,"Raul", "Coloma", "raul.coloma@gmail.com", "contraaabc", Arrays.asList(tipoAlergeno.CACAHUETES, tipoAlergeno.FRUCTOSA), Arrays.asList(p3,p1));
 		Usuario usuario10 = new UsuarioImpl(10,"Mauri", "Rodríguez", "sara.rodriguez@gmail.com", "contraseñadef", Arrays.asList(tipoAlergeno.GLUTEN, tipoAlergeno.HUEVOS,tipoAlergeno.LACTOSA), Arrays.asList(p1));
 		
 		
@@ -94,6 +95,22 @@ public static List<Usuario> getListadoUsuarios(){
 	 	return res;
 		
 	}
+
+	public static Usuario getUsuarioById(int id) {
+		
+		List <Usuario> lus= getListadoUsuarios();
+		Usuario us = null;
+		for(Usuario u: lus)
+		{
+			if(u.getId() == id)
+			{
+				us = u;
+			}
+			
+		}
+		return us;
+	
+}
 	
 
 
