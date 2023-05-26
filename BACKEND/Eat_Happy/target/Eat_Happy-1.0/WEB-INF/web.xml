@@ -32,6 +32,17 @@
   
       <servlet>
     <description></description>
+    <display-name>ListadoProductosPorCategoriaServlet</display-name>
+    <servlet-name>ListadoProductosPorCategoriaServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.ListadoProductosPorCategoriaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListadoProductosPorCategoriaServlet</servlet-name>
+    <url-pattern>/ListadoProductosPorCategoriaServlet</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <description></description>
     <display-name>ListadoCategoriasServlet</display-name>
     <servlet-name>ListadoCategoriasServlet</servlet-name>
     <servlet-class>es.loyola.inftv.app.services.ListadoCategoriasServlet</servlet-class>
@@ -39,6 +50,18 @@
   <servlet-mapping>
     <servlet-name>ListadoCategoriasServlet</servlet-name>
     <url-pattern>/ListadoCategoriasServlet</url-pattern>
+  </servlet-mapping> 
+  
+    
+      <servlet>
+    <description></description>
+    <display-name>ListadoMarcasServlet</display-name>
+    <servlet-name>ListadoMarcasServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.ListadoMarcasServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListadoMarcasServlet</servlet-name>
+    <url-pattern>/ListadoMarcasServlet</url-pattern>
   </servlet-mapping> 
   
       <servlet>
@@ -52,6 +75,41 @@
     <url-pattern>/ConsultarUsuarioServlet</url-pattern>
   </servlet-mapping>
   
+          <servlet>
+    <description></description>
+    <display-name>ConsultarProductoServlet</display-name>
+    <servlet-name>ConsultarProductoServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.ConsultarProductoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultarProductoServlet</servlet-name>
+    <url-pattern>/ConsultarProductoServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <description></description>
+    <display-name>ConsultarMarcaServlet</display-name>
+    <servlet-name>ConsultarMarcaServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.ConsultarMarcaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultarMarcaServlet</servlet-name>
+    <url-pattern>/ConsultarMarcaServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+            <servlet>
+    <description></description>
+    <display-name>EscanearProductoServlet</display-name>
+    <servlet-name>EscanearProductoServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.EscanearProductoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EscanearProductoServlet</servlet-name>
+    <url-pattern>/EscanearProductoServlet</url-pattern>
+  </servlet-mapping>
+  
         <servlet>
     <description></description>
     <display-name>RegistrarUsuarioServlet</display-name>
@@ -63,17 +121,83 @@
     <url-pattern>/RegistrarUsuarioServlet</url-pattern>
   </servlet-mapping>
   
-        <servlet>
+          <servlet>
     <description></description>
-    <display-name>ConsultarProductoServlet</display-name>
-    <servlet-name>ConsultarProductoServlet</servlet-name>
-    <servlet-class>es.loyola.inftv.app.services.ConsultarProductoServlet</servlet-class>
+    <display-name>RegistrarProductoServlet</display-name>
+    <servlet-name>RegistrarProductoServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.RegistrarProductoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ConsultarProductoServlet</servlet-name>
-    <url-pattern>/ConsultarProductoServlet</url-pattern>
+    <servlet-name>RegistrarProductoServlet</servlet-name>
+    <url-pattern>/RegistrarProductoServlet</url-pattern>
   </servlet-mapping>
   
+
+          <servlet>
+    <description></description>
+    <display-name>ModificarUsuarioServlet</display-name>
+    <servlet-name>ModificarUsuarioServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.ModificarUsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificarUsuarioServlet</servlet-name>
+    <url-pattern>/ModificarUsuarioServlet</url-pattern>
+  </servlet-mapping>
+  
+            <servlet>
+    <description></description>
+    <display-name>ModificarProductoServlet</display-name>
+    <servlet-name>ModificarProductoServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.ModificarProductoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificarProductoServlet</servlet-name>
+    <url-pattern>/ModificarProductoServlet</url-pattern>
+  </servlet-mapping>
+  
+           <servlet>
+    <description></description>
+    <display-name>EliminarUsuarioServlet</display-name>
+    <servlet-name>EliminarUsuarioServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.EliminarUsuarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EliminarUsuarioServlet</servlet-name>
+    <url-pattern>/EliminarUsuarioServlet</url-pattern>
+  </servlet-mapping>
+  
+             <servlet>
+    <description></description>
+    <display-name>EliminarProductoServlet</display-name>
+    <servlet-name>EliminarProductoServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.EliminarProductoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EliminarProductoServlet</servlet-name>
+    <url-pattern>/EliminarProductoServlet</url-pattern>
+  </servlet-mapping>
+  
+               <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+                 <servlet>
+    <description></description>
+    <display-name>GuardarFavorito</display-name>
+    <servlet-name>GuardarFavorito</servlet-name>
+    <servlet-class>es.loyola.inftv.app.services.GuardarFavorito</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GuardarFavorito</servlet-name>
+    <url-pattern>/GuardarFavorito</url-pattern>
+  </servlet-mapping>
   
   
     </web-app>
