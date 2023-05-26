@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="TestListadoProductos" time="0.002" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="TestListadoProductos" time="0.06" errors="0" skipped="0">
   <properties>
     <property name="jansi.mode" value="force"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -24,7 +24,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="stderr.encoding" value="UTF-8"/>
     <property name="os.name" value="Mac OS X"/>
-    <property name="classworlds.conf" value="/Users/anagebrael/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf4767418188555685345.tmp"/>
+    <property name="classworlds.conf" value="/Users/anagebrael/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf8434095171621619857.tmp"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/anagebrael/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
@@ -58,9 +58,9 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="m2e.build.project.data.socket.port" value="54386"/>
+    <property name="m2e.build.project.data.socket.port" value="62464"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="TestListadoProductos" name="testGetUsuarios" time="0.002"/>
+  <testcase classname="TestListadoProductos" name="testGetProductos" time="0.06"/>
 </testsuite>

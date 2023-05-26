@@ -1,9 +1,12 @@
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/FavoritoImpl.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/UsuarioImpl.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/manager/MarcaManager.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/ListadoCategoriasServlet.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/CategoriaImpl.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/manager/SupermercadosManager.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/RegistrarUsuarioServlet.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/GuardarFavoritoServlet.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/ListadoMarcasServlet.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/manager/FavoritosManager.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/Marca.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/AlergenoImpl.java
@@ -24,9 +27,11 @@
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/ConsultarProductoServlet.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/OpinionImpl.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/manager/ProductosManager.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/util/DBUtil.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/SupermercadoImpl.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/manager/IngredientesManager.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/EliminarProductoServlet.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/manager/AlergenosManager.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/Supermercado.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/Usuario.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/EliminarUsuarioServlet.java
@@ -34,5 +39,8 @@
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/ConsultarUsuarioServlet.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/GetSupermercadosServlet.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/ProductoImpl.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/LoginServlet.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/ConsultarMarcaServlet.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/MarcaImpl.java
+/Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/services/ListadoProductosPorCategoriaServlet.java
 /Users/anagebrael/eclipse-workspace/Eat_Happy/src/main/java/es/loyola/inftv/app/dao/Producto.java
